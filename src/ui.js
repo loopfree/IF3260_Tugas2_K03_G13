@@ -96,6 +96,60 @@ shading.oninput = () => {
     main();
 }
 
+const xLightPos = document.getElementById("x-light-position");
+const xLightPosValue = document.getElementById("x-light-position-value");
+
+xLightPos.oninput = () => {
+    xLightPosValue.innerHTML = xLightPos.value;
+    lightPosition[0] = xLightPos.value;
+    main();
+}
+
+const yLightPos = document.getElementById("y-light-position");
+const yLightPosValue = document.getElementById("y-light-position-value");
+
+yLightPos.oninput = () => {
+    yLightPosValue.innerHTML = yLightPos.value;
+    lightPosition[1] = yLightPos.value;
+    main();
+}
+
+const zLightPos = document.getElementById("z-light-position");
+const zLightPosValue = document.getElementById("z-light-position-value");
+
+zLightPos.oninput = () => {
+    zLightPosValue.innerHTML = zLightPos.value;
+    lightPosition[2] = zLightPos.value;
+    main();
+}
+
+const red = document.getElementById("red");
+const redValue = document.getElementById("red-value");
+
+red.oninput = () => {
+    redValue.innerHTML = red.value;
+    lightColor[0] = red.value;
+    main();
+}
+
+const green = document.getElementById("green");
+const greenValue = document.getElementById("green-value");
+
+green.oninput = () => {
+    greenValue.innerHTML = green.value;
+    lightColor[1] = green.value;
+    main();
+}
+
+const blue = document.getElementById("blue");
+const blueValue = document.getElementById("blue-value");
+
+blue.oninput = () => {
+    blueValue.innerHTML = blue.value;
+    lightColor[2] = blue.value;
+    main();
+}
+
 const reset = document.getElementById("reset");
 const reset_ui = () => {
     //manage scale
@@ -125,6 +179,25 @@ const reset_ui = () => {
     zoom = 1.0;
     zoomSlider.value = zoom;
     zoomValue.innerHTML = zoomSlider.value;
+
+    //manage light position
+    lightPosition = [300, 300, 300];
+    xLightPos.value = lightPosition[0];
+    yLightPos.value = lightPosition[1];
+    zLightPos.value = lightPosition[2];
+    xLightPosValue.innerHTML = xLightPos.value;
+    yLightPosValue.innerHTML = yLightPos.value;
+    zLightPosValue.innerHTML = zLightPos.value;
+
+    //manage light color
+    lightColor = [1, 1, 1];
+    red.value = lightColor[0];
+    green.value = lightColor[1];
+    blue.value = lightColor[2];
+    redValue.innerHTML = red.value;
+    greenValue.innerHTML = green.value;
+    blueValue.innerHTML = blue.value;
+
     main();
 }
 reset.onclick = () => {

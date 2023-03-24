@@ -17,6 +17,8 @@ var objColors = [];
 var objNormals = [];
 var centerobjectmin = [0,0,0];
 var centerobjectmax = [0,0,0];
+var lightPosition = [300, 300, 300];
+var lightColor = [1, 1, 1]
 
 var translation = [0, 0, 0];
 var rotation = [degToRad(15), degToRad(30), degToRad(0)];

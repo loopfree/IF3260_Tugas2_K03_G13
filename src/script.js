@@ -109,11 +109,14 @@ function main() {
   
     var program = webglUtils.createProgramFromScripts(gl, ["vertex-shader-3d", "fragment-shader-3d"]);
   
-    var positionLocation = gl.getAttribLocation(program, "a_position");
-    var colorLocation = gl.getAttribLocation(program, "a_color");
-    var normalLocation = gl.getAttribLocation(program, "a_normal");
+    var positionLocation = gl.getAttribLocation(program, "aPos");
+    var colorLocation = gl.getAttribLocation(program, "aColor");
+    var normalLocation = gl.getAttribLocation(program, "aNormal");
   
-    var matrixLocation = gl.getUniformLocation(program, "u_matrix");
+    var matrixLocation = gl.getUniformLocation(program, "projection");
+    
+    var lightPositionLocation = gl.getUniformLocation(program, "lightPos");
+    var lightColorLocation = gl.getUniformLocation(program, "lightColor");
   
     var positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
@@ -157,7 +160,8 @@ function main() {
         gl.enableVertexAttribArray(colorLocation);
     
         gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-    
+
+        
         var size = 3;                 
         var type = gl.UNSIGNED_BYTE; 
         var normalize = true;         
@@ -171,14 +175,14 @@ function main() {
             stride,
             offset
             );
-    
+            
         if (isShade) {
-            const shadingFlagLocation = gl.getUniformLocation(program, "u_shading_flag");
+            const shadingFlagLocation = gl.getUniformLocation(program, "shading");
             gl.uniform1i(shadingFlagLocation, true);
             gl.enableVertexAttribArray(normalLocation);
-    
+            
             gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
-    
+            
             var size = 3;                 
             var type = gl.FLOAT;           
             var normalize = false;         
@@ -192,16 +196,17 @@ function main() {
                 stride,
                 offset
                 );
-            
-            var normalMatrix = calculateNormalMatrix();
-    
-            gl.uniformMatrix4fv(
-            gl.getUniformLocation(program, 'u_normal_matrix'),
-            false,
-            normalMatrix
-            );
-        }
-        else {
+                
+                var normalMatrix = calculateNormalMatrix();
+                
+                gl.uniformMatrix4fv(
+                    gl.getUniformLocation(program, 'model'),
+                    false,
+                    normalMatrix
+                    );
+                gl.uniform3fv(lightPositionLocation, lightPosition);
+                gl.uniform3fv(lightColorLocation, lightColor);
+        } else {
             gl.disableVertexAttribArray(normalLocation);
         }
 

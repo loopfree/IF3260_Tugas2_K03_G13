@@ -1,200 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test </title>
-  <script src="./global.js" defer></script>
-  <script src="./matrix-util.js" defer></script>
-  <script src="./script.js" defer></script>
-  <script src="./ui.js" defer></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test </title>
+	<script src="./global.js" defer></script>
+	<script src="./matrix-util.js" defer></script>
+	<script src="./script.js" defer></script>
+	<script src="./ui.js" defer></script>
 
-  <link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div id="content">
-    <div class="flex-row">
-      <div class="flex-col">
-        <div name="translation" class="subcontent">
-          <div class="subtitle">
-            Translation
-          </div>
-          <div id="x">
-            <p>X Translation</p>
-            <input id="x-translation" type="range" min="0" max="1000" value="0"/>
-            <label id="x-translation-value" class="value"></label>
-          </div>
-          <div id="y">
-            <p>Y Translation</p>
-            <input id="y-translation" type="range" min="0" max="1000" value="0"/>
-            <label id="y-translation-value" class="value"></label>
-          </div>
-          <div id="z">
-            <p>Z Translation</p>
-            <input id="z-translation" type="range" min="0" max="1000" value="0"/>
-            <label id="z-translation-value" class="value"></label>
-          </div>
-        </div>
-        <div name="rotation" class="subcontent">
-          <div class="subtitle">
-            Rotation
-          </div>
-          <div id="x">
-            <p>X Rotation</p>
-            <input id="x-rotation" type="range" min="0" max="360" value="0"/>
-            <label id="x-rotation-value" class="value"></label>
-          </div>
-          <div id="y">
-            <p>Y Rotation</p>
-            <input id="y-rotation" type="range" min="0" max="360" value="0"/>
-            <label id="y-rotation-value" class="value"></label>
-          </div>
-          <div id="z">
-            <p>Z rotation</p>
-            <input id="z-rotation" type="range" min="0" max="360" value="0"/>
-            <label id="z-rotation-value" class="value"></label>
-          </div>
-        </div>
-      </div>
-      <div class="flex-col">
-        <div name="scaling" class="subcontent">
-          <div class="subtitle">
-            Scaling
-          </div>
-          <div id="x">
-            <p>X Scaling</p>
-            <input id="x-scaling" type="range" min="0" max="5" step="0.05" value="0"/>
-            <label id="x-scaling-value" class="value"></label>
-          </div>
-          <div id="y">
-            <p>Y Scaling</p>
-            <input id="y-scaling" type="range" min="0" max="5" step="0.05" value="0"/>
-            <label id="y-scaling-value" class="value"></label>
-          </div>
-          <div id="z">
-            <p>Z Scaling</p>
-            <input id="z-scaling" type="range" min="0" max="5" step="0.05" value="0"/>
-            <label id="z-scaling-value" class="value"></label>
-          </div>
-        </div>
-        <div class="subcontent">
-          <div class="subtitle">
-            Camera
-          </div>
-          <div id="x">
-            <p>X Camera</p>
-            <input id="x-camera-rotation" type="range" min="0" max="360" value="0"/>
-            <label id="x-camera-value" class="value"></label>
-          </div>
-          <div id="y">
-            <p>Y Camera</p>
-            <input id="y-camera-rotation" type="range" min="0" max="360" value="0"/>
-            <label id="y-camera-value" class="value"></label>
-          </div>
-          <div id="z">
-            <p>Z Camera</p>
-            <input id="z-camera-rotation" type="range" min="0" max="360" value="0"/>
-            <label id="z-camera-value" class="value"></label>
-          </div>
-          <div id="zoom-manager">
-            <p>Zoom</p>
-            <input id="zoom" type="range" min="0" max="5" step="0.05" value="0"/>
-            <label id="zoom-value" class="value"></label>
-          </div>
-        </div>
-      </div>
-      <div class="flex-col">
-        <div class="subcontent">
-          <div class="subtitle">
-            File
-          </div>
-          <div id="load-obj">
-            <p>Load</p>
-            <input id="load" type="file" accept=".json"/>
-          </div>
-          <div id="save-obj">
-            <p>Save</p>
-            <input id="save" type="button" value="Save"/>
-          </div>
-        </div>
-        <div class="subcontent">
-          <div class="subtitle">
-            Projection
-          </div>
-          <div class="flex-col projection">
-            <button id="ortographic">Ortographic</button>
-            <button id="oblique">Oblique</button>
-            <button id="perspective">Perspective</button>
-          </div>
-        </div>
-        <div class="subcontent">
-          <div class="subtitle">
-            Shading
-          </div>
-          <label for="shading">Shading</label>
-          <input id="shading" type="checkbox" />
-        </div>
-      </div>
-      <div class="flex-col">
-        <div class="subcontent">
-          <div class="subtitle">
-            Util
-          </div>
-          <div class="flex-col util">
-            <button id="help">Help</button>
-            <button id="reset">Reset</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <canvas id="canvas" width="800px" height="600px"></canvas>
-  </div>
+	<div id="content">
+		<div class="flex-row">
+			<div class="flex-col">
+				<div name="translation" class="subcontent">
+					<div class="subtitle">
+						Translation
+					</div>
+					<div id="x">
+						<p>X Translation</p>
+						<input id="x-translation" type="range" min="0" max="1000" value="0"/>
+						<label id="x-translation-value" class="value"></label>
+					</div>
+					<div id="y">
+						<p>Y Translation</p>
+						<input id="y-translation" type="range" min="0" max="1000" value="0"/>
+						<label id="y-translation-value" class="value"></label>
+					</div>
+					<div id="z">
+						<p>Z Translation</p>
+						<input id="z-translation" type="range" min="0" max="1000" value="0"/>
+						<label id="z-translation-value" class="value"></label>
+					</div>
+				</div>
+				<div name="rotation" class="subcontent">
+					<div class="subtitle">
+						Rotation
+					</div>
+					<div id="x">
+						<p>X Rotation</p>
+						<input id="x-rotation" type="range" min="0" max="360" value="0"/>
+						<label id="x-rotation-value" class="value"></label>
+					</div>
+					<div id="y">
+						<p>Y Rotation</p>
+						<input id="y-rotation" type="range" min="0" max="360" value="0"/>
+						<label id="y-rotation-value" class="value"></label>
+					</div>
+					<div id="z">
+						<p>Z rotation</p>
+						<input id="z-rotation" type="range" min="0" max="360" value="0"/>
+						<label id="z-rotation-value" class="value"></label>
+					</div>
+				</div>
+			</div>
+			<div class="flex-col">
+				<div name="scaling" class="subcontent">
+					<div class="subtitle">
+						Scaling
+					</div>
+					<div id="x">
+						<p>X Scaling</p>
+						<input id="x-scaling" type="range" min="0" max="5" step="0.05" value="0"/>
+						<label id="x-scaling-value" class="value"></label>
+					</div>
+					<div id="y">
+						<p>Y Scaling</p>
+						<input id="y-scaling" type="range" min="0" max="5" step="0.05" value="0"/>
+						<label id="y-scaling-value" class="value"></label>
+					</div>
+					<div id="z">
+						<p>Z Scaling</p>
+						<input id="z-scaling" type="range" min="0" max="5" step="0.05" value="0"/>
+						<label id="z-scaling-value" class="value"></label>
+					</div>
+				</div>
+				<div class="subcontent">
+					<div class="subtitle">
+						Camera
+					</div>
+					<div id="x">
+						<p>X Camera</p>
+						<input id="x-camera-rotation" type="range" min="0" max="360" value="0"/>
+						<label id="x-camera-value" class="value"></label>
+					</div>
+					<div id="y">
+						<p>Y Camera</p>
+						<input id="y-camera-rotation" type="range" min="0" max="360" value="0"/>
+						<label id="y-camera-value" class="value"></label>
+					</div>
+					<div id="z">
+						<p>Z Camera</p>
+						<input id="z-camera-rotation" type="range" min="0" max="360" value="0"/>
+						<label id="z-camera-value" class="value"></label>
+					</div>
+					<div id="zoom-manager">
+						<p>Zoom</p>
+						<input id="zoom" type="range" min="0" max="5" step="0.05" value="0"/>
+						<label id="zoom-value" class="value"></label>
+					</div>
+				</div>
+			</div>
+			<div class="flex-col">
+				<div class="subcontent">
+					<div class="subtitle">
+						File
+					</div>
+					<div id="load-obj">
+						<p>Load</p>
+						<input id="load" type="file" accept=".json"/>
+					</div>
+				</div>
+				<div class="subcontent">
+					<div class="subtitle">
+						Projection
+					</div>
+					<div class="flex-col projection">
+						<button id="ortographic">Ortographic</button>
+						<button id="oblique">Oblique</button>
+						<button id="perspective">Perspective</button>
+					</div>
+				</div>
+				<div class="subcontent">
+					<div class="subtitle">
+						Shading
+					</div>
+					<label for="shading">Shading</label>
+					<input id="shading" type="checkbox" />
+                    <div class="light position">
+                    </div>
+                    <div class="flex-row">
+                        <div class="flex-col">
+                            <p>X Light Position</p>
+                            <input type="range" id="x-light-position" min="0" max="600" value="0"/>
+                            <label id="x-light-position-value"></label>
+                            <div class="light position">
+                                <p>Y Light Position</p>
+                                <input type="range" id="y-light-position" min="0" max="600" value="0"/>
+                                <label id="y-light-position-value"></label>
+                            </div>
+                            <div class="light position">
+                                <p>Z Light Position</p>
+                                <input type="range" id="z-light-position" min="0" max="600" value="0"/>
+                                <label id="z-light-position-value"></label>
+                            </div>
+                        </div>
+                        <div class="flex-col">
+                            <div class="color">
+                                <p>Red</p>
+                                <input type="range" id="red" min="0" max="1" step="0.01" value="0"/>
+                                <label id="red-value"></label>
+                            </div>
+                            <div class="color">
+                                <p>Green</p>
+                                <input type="range" id="green" min="0" max="1" step="0.01" value="0"/>
+                                <label id="green-value"></label>
+                            </div>
+                            <div class="color">
+                                <p>Blue</p>
+                                <input type="range" id="blue" min="0" max="1" step="0.01" value="0"/>
+                                <label id="blue-value"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+			<div class="flex-col">
+				<div class="subcontent">
+					<div class="subtitle">
+						Util
+					</div>
+					<div class="flex-col util">
+						<button id="help">Help</button>
+						<button id="reset">Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<canvas id="canvas" width="800px" height="600px"></canvas>
+	</div>
 
-  <!-- Shader -->
-  <script  id="vertex-shader-3d" type="x-shader/x-vertex">
-    attribute vec4 a_position;
-    attribute vec4 a_color;
-    attribute vec3 a_normal;
+	<!-- Shader -->
+	<script  id="vertex-shader-3d" type="x-shader/x-vertex">
+    attribute vec3 aPos;
+    attribute vec3 aColor;
+    attribute vec3 aNormal;
+
+    uniform mat4 model;
+    uniform mat4 projection;
+
+    varying vec3 FragPos;
+    varying vec3 Normal;
+    varying vec3 Color;
+
+    void main() {
+        gl_Position = projection * vec4(aPos, 1.0);
+        FragPos = vec3(model * vec4(aPos, 1.0));
+        Normal = mat3(model) * aNormal;
+        Color = aColor;
+    }
+	</script>
+	
+	<script  id="fragment-shader-3d" type="x-shader/x-fragment">
+    precision mediump float;
+
+    varying vec3 FragPos;
+    varying vec3 Normal;
+    varying vec3 Color;
     
-    uniform mat4 u_matrix;
-    uniform mat4 u_normal_matrix;
-    
-    varying vec4 v_color;
-    varying highp vec3 v_lighting;
+    uniform vec3 lightPos;
+    uniform vec3 lightColor;
+
+    uniform bool shading;
     
     void main() {
-        gl_Position = u_matrix * a_position;
-        
-        v_color = a_color;
-
-        highp vec3 ambientLight = vec3(0.3, 0.3, 0.3);
-        highp vec3 directionalLightColor = vec3(1, 1, 1);
-        highp vec3 directionalVector = normalize(vec3(0.85, 0.8, 0.75));
-
-        highp vec4 transformedNormal = u_normal_matrix * vec4(a_normal, 1.0);
-
-        highp float directional = max(dot(transformedNormal.xyz, directionalVector), 0.0);
-        v_lighting = ambientLight + (directionalLightColor * directional);
+        if(shading) {
+            vec3 lightDir = normalize(lightPos - FragPos);
+            vec3 diffuse = max(dot(Normal, lightDir), 0.0) * Color * lightColor;
+            gl_FragColor = vec4(diffuse, 1.0);
+        } else {
+            gl_FragColor = vec4(Color, 1.0);
+        }
     }
-  </script>
-  
-  <script  id="fragment-shader-3d" type="x-shader/x-fragment">
-  precision mediump float;
-
-  varying vec4 v_color;
-  varying highp vec3 v_lighting;
-  
-  uniform bool u_shading_flag;
-  
-  void main() {
-        if (u_shading_flag){
-            gl_FragColor = vec4(v_color.rgb * v_lighting, v_color.a);
-        }
-        else {
-            gl_FragColor = v_color;
-        }
-  }
-  </script>
+	</script>
 </body>
 </html>
