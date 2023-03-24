@@ -1,7 +1,3 @@
-const zoomSlider = document.getElementById('zoom');
-const zoomValue = document.getElementById("zoom-value");
-
-
 const loadButton = document.getElementById("load-obj");
 loadButton.onchange = function(event) {
         isShadingOn = false;
@@ -23,6 +19,10 @@ loadButton.onchange = function(event) {
     };
     reader.readAsText(file);
 }
+
+const zoomSlider = document.getElementById('zoom');
+const zoomValue = document.getElementById("zoom-value");
+zoomSlider.value = zoom;
 
 zoomSlider.oninput = () => {
     zoomValue.innerHTML = zoomSlider.value;
@@ -96,6 +96,7 @@ shading.oninput = () => {
     main();
 }
 
+const reset = document.getElementById("reset");
 const reset_ui = () => {
     //manage scale
     scale = [1, 1, 1];
@@ -118,4 +119,14 @@ const reset_ui = () => {
     //manage shading
     isShade = false;
     shading.value = false;
+    shading.checked = false;
+
+    //manage zoom
+    zoom = 1.0;
+    zoomSlider.value = zoom;
+    zoomValue.innerHTML = zoomSlider.value;
+    main();
+}
+reset.onclick = () => {
+    reset_ui();
 }
