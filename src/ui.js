@@ -60,6 +60,36 @@ zScaling.oninput = () => {
     main();
 }
 
+const xTranslation = document.getElementById("x-translation");
+const xTranslationValue = document.getElementById("x-translation-value");
+xTranslation.value = translation[0];
+
+xTranslation.oninput = () => {
+    xTranslationValue.innerHTML = xTranslation.value;
+    translation[0] = xTranslation.value;
+    main();
+}
+
+const yTranslation = document.getElementById("y-translation");
+const yTranslationValue = document.getElementById("y-translation-value");
+yTranslation.value = translation[1];
+
+yTranslation.oninput = () => {
+    yTranslationValue.innerHTML = yTranslation.value;
+    translation[1] = yTranslation.value;
+    main();
+}
+
+const zTranslation = document.getElementById("z-translation");
+const zTranslationValue = document.getElementById("z-translation-value");
+zTranslation.value = translation[2];
+
+zTranslation.oninput = () => {
+    zTranslationValue.innerHTML = zTranslation.value;
+    translation[2] = zTranslation.value;
+    main();
+}
+
 const shading = document.getElementById("shading");
 shading.oninput = () => {
     isShade = shading.checked;
@@ -75,6 +105,15 @@ const reset_ui = () => {
     xScalingValue.innerHTML = xScaling.value;
     yScalingValue.innerHTML = yScaling.value;
     zScalingValue.innerHTML = zScaling.value;
+
+    //manage translation
+    translation = [0, 0, 0];
+    xTranslation.value = translation[0];
+    yTranslation.value = translation[1];
+    zTranslation.value = translation[2];
+    xTranslationValue.innerHTML = xTranslation.value;
+    yTranslationValue.innerHTML = yTranslation.value;
+    zTranslationValue.innerHTML = zTranslation.value;
 
     //manage shading
     isShade = false;
