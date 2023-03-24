@@ -203,3 +203,10 @@ const reset_ui = () => {
 reset.onclick = () => {
     reset_ui();
 }
+
+function help() {
+    // var popup = document.getElementsByClassName("popuptext");
+    [].forEach.call(document.querySelectorAll('.popuptext'), function (el) {
+        el.classList.toggle("show");
+    });
+}

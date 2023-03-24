@@ -64,3 +64,30 @@ body{
   display: inline-block;
   width: 25px;
 }
+
+.popup {
+  position: relative;
+  margin: inherit;
+  bottom: 10%;
+}
+
+.popup .popuptext {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  font-size: medium;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+}
+
+.popup .show {
+  visibility: visible;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}

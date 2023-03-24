@@ -17,17 +17,17 @@
 		<div class="flex-row">
 			<div class="flex-col">
 				<div name="translation" class="subcontent">
-					<div class="subtitle">
+          <div class="subtitle">
 						Translation
 					</div>
 					<div id="x">
 						<p>X Translation</p>
-						<input id="x-translation" type="range" min="0" max="1000" value="0"/>
+						<input id="x-translation" type="range" min="0" max="800" value="0"/>
 						<label id="x-translation-value" class="value"></label>
 					</div>
 					<div id="y">
 						<p>Y Translation</p>
-						<input id="y-translation" type="range" min="0" max="1000" value="0"/>
+						<input id="y-translation" type="range" min="0" max="600" value="0"/>
 						<label id="y-translation-value" class="value"></label>
 					</div>
 					<div id="z">
@@ -35,6 +35,9 @@
 						<input id="z-translation" type="range" min="0" max="1000" value="0"/>
 						<label id="z-translation-value" class="value"></label>
 					</div>
+          <div class="popup">
+            <span class="popuptext" id="help-translation">Menggeser objek pada sumbu yang sesuai</span>
+          </div>
 				</div>
 				<div name="rotation" class="subcontent">
 					<div class="subtitle">
@@ -55,6 +58,9 @@
 						<input id="z-rotation" type="range" min="0" max="360" value="0"/>
 						<label id="z-rotation-value" class="value"></label>
 					</div>
+          <div class="popup">
+            <span class="popuptext" id="help-rotation">Memutar objek terhadap sumbu yang sesuai</span>
+          </div>
 				</div>
 			</div>
 			<div class="flex-col">
@@ -77,6 +83,9 @@
 						<input id="z-scaling" type="range" min="0" max="5" step="0.05" value="0"/>
 						<label id="z-scaling-value" class="value"></label>
 					</div>
+          <div class="popup">
+            <span class="popuptext" id="help-scaling">Mengatur ukuran objek pada sumbu yang sesuai</span>
+          </div>
 				</div>
 				<div class="subcontent">
 					<div class="subtitle">
@@ -102,6 +111,9 @@
 						<input id="zoom" type="range" min="0" max="5" step="0.05" value="0"/>
 						<label id="zoom-value" class="value"></label>
 					</div>
+          <div class="popup">
+            <span class="popuptext" id="help-camera">Mengatur posisi dan perbesaran kamera</span>
+          </div>
 				</div>
 			</div>
 			<div class="flex-col">
@@ -113,6 +125,9 @@
 						<p>Load</p>
 						<input id="load" type="file" accept=".json"/>
 					</div>
+          <div class="popup">
+            <span class="popuptext" id="help-file">Load file objek 3D yang diinginkan</span>
+          </div>
 				</div>
 				<div class="subcontent">
 					<div class="subtitle">
@@ -123,6 +138,9 @@
 						<button id="oblique">Oblique</button>
 						<button id="perspective">Perspective</button>
 					</div>
+          <div class="popup">
+            <span class="popuptext" id="help-projection">Mengatur jenis projeksi yang diinginkan</span>
+          </div>
 				</div>
 				<div class="subcontent">
 					<div class="subtitle">
@@ -130,43 +148,46 @@
 					</div>
 					<label for="shading">Shading</label>
 					<input id="shading" type="checkbox" />
-                    <div class="light position">
-                    </div>
-                    <div class="flex-row">
-                        <div class="flex-col">
-                            <p>X Light Position</p>
-                            <input type="range" id="x-light-position" min="0" max="600" value="0"/>
-                            <label id="x-light-position-value"></label>
-                            <div class="light position">
-                                <p>Y Light Position</p>
-                                <input type="range" id="y-light-position" min="0" max="600" value="0"/>
-                                <label id="y-light-position-value"></label>
-                            </div>
-                            <div class="light position">
-                                <p>Z Light Position</p>
-                                <input type="range" id="z-light-position" min="0" max="600" value="0"/>
-                                <label id="z-light-position-value"></label>
-                            </div>
-                        </div>
-                        <div class="flex-col">
-                            <div class="color">
-                                <p>Red</p>
-                                <input type="range" id="red" min="0" max="1" step="0.01" value="0"/>
-                                <label id="red-value"></label>
-                            </div>
-                            <div class="color">
-                                <p>Green</p>
-                                <input type="range" id="green" min="0" max="1" step="0.01" value="0"/>
-                                <label id="green-value"></label>
-                            </div>
-                            <div class="color">
-                                <p>Blue</p>
-                                <input type="range" id="blue" min="0" max="1" step="0.01" value="0"/>
-                                <label id="blue-value"></label>
-                            </div>
-                        </div>
-                    </div>
+          <div class="flex-row">
+            <div class="flex-col">
+              <div class="light position">
+                <p>X Light Position</p>
+                <input type="range" id="x-light-position" min="0" max="600" value="0"/>
+                <label id="x-light-position-value"></label>
+              </div>
+              <div class="light position">
+                  <p>Y Light Position</p>
+                  <input type="range" id="y-light-position" min="0" max="600" value="0"/>
+                  <label id="y-light-position-value"></label>
+              </div>
+              <div class="light position">
+                  <p>Z Light Position</p>
+                  <input type="range" id="z-light-position" min="0" max="600" value="0"/>
+                  <label id="z-light-position-value"></label>
+              </div>
+            </div>
+            <div class="flex-col">
+                <div class="color">
+                    <p>Red</p>
+                    <input type="range" id="red" min="0" max="1" step="0.01" value="0"/>
+                    <label id="red-value"></label>
                 </div>
+                <div class="color">
+                    <p>Green</p>
+                    <input type="range" id="green" min="0" max="1" step="0.01" value="0"/>
+                    <label id="green-value"></label>
+                </div>
+                <div class="color">
+                    <p>Blue</p>
+                    <input type="range" id="blue" min="0" max="1" step="0.01" value="0"/>
+                    <label id="blue-value"></label>
+                </div>
+              </div>
+            </div>
+            <div class="popup">
+              <span class="popuptext" id="help-shading">Mengatur penggunaan shading serta konfigurasi sumber cahaya</span>
+            </div>
+        </div>
 			</div>
 			<div class="flex-col">
 				<div class="subcontent">
@@ -174,7 +195,7 @@
 						Util
 					</div>
 					<div class="flex-col util">
-						<button id="help">Help</button>
+						<button id="help" onclick="help()">Help</button>
 						<button id="reset">Reset</button>
 					</div>
 				</div>
