@@ -90,6 +90,36 @@ zTranslation.oninput = () => {
     main();
 }
 
+const xCameraRotation = document.getElementById("x-camera-rotation");
+const xCameraValue = document.getElementById("x-camera-value");
+xCameraRotation.value = degToRad(camrotation[0]);
+
+xCameraRotation.oninput = () => {
+    xCameraValue.innerHTML = xCameraRotation.value;
+    camrotation[0] = degToRad(xCameraRotation.value);
+    main();
+}
+
+const yCameraRotation = document.getElementById("y-camera-rotation");
+const yCameraValue = document.getElementById("y-camera-value");
+yCameraRotation.value = degToRad(camrotation[1]);
+
+yCameraRotation.oninput = () => {
+    yCameraValue.innerHTML = yCameraRotation.value;
+    camrotation[1] = degToRad(yCameraRotation.value);
+    main();
+}
+
+const zCameraRotation = document.getElementById("z-camera-rotation");
+const zCameraValue = document.getElementById("z-camera-value");
+zCameraRotation.value = degToRad(camrotation[2]);
+
+zCameraRotation.oninput = () => {
+    zCameraValue.innerHTML = zCameraRotation.value;
+    camrotation[2] = degToRad(zCameraRotation.value);
+    main();
+}
+
 const shading = document.getElementById("shading");
 shading.oninput = () => {
     isShade = shading.checked;
@@ -169,6 +199,15 @@ const reset_ui = () => {
     xTranslationValue.innerHTML = xTranslation.value;
     yTranslationValue.innerHTML = yTranslation.value;
     zTranslationValue.innerHTML = zTranslation.value;
+
+    // managing camera rotation
+    camrotation = [degToRad(0), degToRad(0), degToRad(0)];
+    xCameraRotation.value = camrotation[0];
+    yCameraRotation.value = camrotation[1];
+    zCameraRotation.value = camrotation[2];
+    xCameraValue.innerHTML = xCameraRotation.value;
+    yCameraValue.innerHTML = yCameraRotation.value;
+    zCameraValue.innerHTML = zCameraRotation.value;
 
     //manage shading
     isShade = false;
