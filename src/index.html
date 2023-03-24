@@ -185,7 +185,7 @@
 
 	<!-- Shader -->
 	<script  id="vertex-shader-3d" type="x-shader/x-vertex">
-    attribute vec3 aPos;
+	attribute vec3 aPos;
     attribute vec3 aColor;
     attribute vec3 aNormal;
 
@@ -205,26 +205,33 @@
 	</script>
 	
 	<script  id="fragment-shader-3d" type="x-shader/x-fragment">
-    precision mediump float;
+	precision mediump float;
+	
+	varying vec3 FragPos;
+	varying vec3 Normal;
+	varying vec3 Color;
+	
+	uniform vec3 lightPos;
+	uniform vec3 lightColor;
 
-    varying vec3 FragPos;
-    varying vec3 Normal;
-    varying vec3 Color;
-    
-    uniform vec3 lightPos;
-    uniform vec3 lightColor;
+	uniform bool shading;
+	uniform float shininess;
 
-    uniform bool shading;
-    
-    void main() {
-        if(shading) {
-            vec3 lightDir = normalize(lightPos - FragPos);
-            vec3 diffuse = max(dot(Normal, lightDir), 0.0) * Color * lightColor;
-            gl_FragColor = vec4(diffuse, 1.0);
-        } else {
-            gl_FragColor = vec4(Color, 1.0);
-        }
-    }
+	void main() {
+		if(shading) {
+			vec3 lightDir = normalize(lightPos - FragPos);
+			vec3 viewDir = normalize(-FragPos);
+			vec3 reflectDir = reflect(-lightDir, Normal);
+
+			float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
+			vec3 specular = spec * lightColor;
+
+			vec3 diffuse = max(dot(Normal, lightDir), 0.0) * Color * lightColor;
+			gl_FragColor = vec4(diffuse + specular, 1.0);
+		} else {
+			gl_FragColor = vec4(Color, 1.0);
+		}
+	}
 	</script>
 </body>
 </html>

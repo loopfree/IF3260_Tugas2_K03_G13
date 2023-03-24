@@ -117,6 +117,8 @@ function main() {
     
     var lightPositionLocation = gl.getUniformLocation(program, "lightPos");
     var lightColorLocation = gl.getUniformLocation(program, "lightColor");
+
+    var shininessLocation = gl.getUniformLocation(program, "shininess");
   
     var positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
@@ -206,6 +208,7 @@ function main() {
                     );
                 gl.uniform3fv(lightPositionLocation, lightPosition);
                 gl.uniform3fv(lightColorLocation, lightColor);
+                gl.uniform1f(shininessLocation, 5);
         } else {
             gl.disableVertexAttribArray(normalLocation);
         }
