@@ -12,10 +12,57 @@ loadButton.onchange = function(event) {
         objColors = data.colors;
         objNormals = data.normals;
 
-        console.log(objVertices.length);
+        centerobjectmax = [...objVertices];
+        centerobjectmin = [...objVertices];
 
-        reset_ui();
-        main();
+        for (let i = 3; i < objVertices.length; i++) {
+            const axis = i % 3;
+            
+            if (centerobjectmax[axis] < objVertices[i]) {
+                centerobjectmax[axis] = objVertices[i];
+            }
+            
+            if (centerobjectmin[axis] > objVertices[i]) {
+                centerobjectmin[axis] = objVertices[i];
+            }
+        }
+
+        let xFlag = false;
+        let yFlag = false;
+        let zFlag = false;
+
+        const firstAnimation = () => {
+            if(!xFlag) {
+                rotation[0] = (radToDeg(rotation[0]) + 1) % 360;
+                if(rotation[0] < 1) {
+                    rotation[0] = 0;
+                    xFlag = true;
+                }
+                rotation[0] = degToRad(rotation[0]);
+            }
+            if(!yFlag) {
+                rotation[1] = (radToDeg(rotation[1]) + 1) % 360;
+                if(rotation[1] < 1) {
+                    rotation[1] = 0;
+                    yFlag = true;
+                }
+                rotation[1] = degToRad(rotation[1]);
+            }
+            if(!zFlag) {
+                rotation[2] = (radToDeg(rotation[2]) + 1) % 360;
+                if(rotation[2] < 1) {
+                    rotation[2] = 0;
+                    zFlag = true;
+                }
+                rotation[2] = degToRad(rotation[2]);
+            }
+            if(xFlag && yFlag && zFlag) {
+                return;
+            }
+            requestAnimationFrame(firstAnimation);
+            main();
+        }
+        requestAnimationFrame(firstAnimation);
     };
     reader.readAsText(file);
 }
@@ -153,6 +200,33 @@ zLightPos.oninput = () => {
     main();
 }
 
+const xRotation = document.getElementById("x-rotation");
+const xRotationValue = document.getElementById("x-rotation-value");
+
+xRotation.oninput = () => {
+    xRotationValue.innerHTML = xRotation.value;
+    rotation[0] = degToRad(xRotation.value);
+    main();
+}
+
+const yRotation = document.getElementById("y-rotation");
+const yRotationValue = document.getElementById("y-rotation-value");
+
+yRotation.oninput = () => {
+    yRotationValue.innerHTML = yRotation.value;
+    rotation[1] = degToRad(yRotation.value);
+    main();
+}
+
+const zRotation = document.getElementById("z-rotation");
+const zRotationValue = document.getElementById("z-rotation-value");
+
+zRotation.oninput = () => {
+    zRotationValue.innerHTML = zRotation.value;
+    rotation[2] = degToRad(zRotation.value);
+    main();
+}
+
 const red = document.getElementById("red");
 const redValue = document.getElementById("red-value");
 
@@ -180,6 +254,42 @@ blue.oninput = () => {
     main();
 }
 
+const animateBtn = document.getElementById("animate");
+let stopAnim = false;
+let run = false
+animateBtn.onclick = () => {
+    if(run) {
+        stopAnim = true;
+        run = false;
+        console.log("test");
+        return;
+    }
+    let animation = undefined;
+    animation = () => {
+        run = true;
+        rotation[0] = (radToDeg(rotation[0]) + 1) % 360;
+        xRotation.value = rotation[0];
+        xRotationValue.innerHTML = Math.trunc(rotation[0]);
+        rotation[0] = degToRad(rotation[0]);
+        rotation[1] = (radToDeg(rotation[1]) + 1) % 360;
+        yRotation.value = rotation[1];
+        yRotationValue.innerHTML = Math.trunc(rotation[1]);
+        rotation[1] = degToRad(rotation[1]);
+        rotation[2] = (radToDeg(rotation[2]) + 1) % 360;
+        zRotation.value = rotation[2];
+        zRotationValue.innerHTML = Math.trunc(rotation[2]);
+        rotation[2] = degToRad(rotation[2]);
+        if(stopAnim) {
+            run = false;
+            stopAnim = false;
+            return;
+        }
+        requestAnimationFrame(animation);
+        main();
+    }
+    requestAnimationFrame(animation);
+}
+
 const reset = document.getElementById("reset");
 const reset_ui = () => {
     //manage scale
@@ -192,7 +302,7 @@ const reset_ui = () => {
     zScalingValue.innerHTML = zScaling.value;
 
     //manage translation
-    translation = [0, 0, 0];
+    translation = [325, 225, 0];
     xTranslation.value = translation[0];
     yTranslation.value = translation[1];
     zTranslation.value = translation[2];
