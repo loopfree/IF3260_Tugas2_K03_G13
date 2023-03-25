@@ -254,6 +254,24 @@ blue.oninput = () => {
     main();
 }
 
+const perspectiveBtn = document.getElementById("perspective");
+perspectiveBtn.onclick = () => {
+    drawingType = 0;
+    main();
+}
+
+const ortographicBtn = document.getElementById("ortographic");
+ortographicBtn.onclick = () => {
+    drawingType = 1;
+    main();
+}
+
+const obliqueBtn = document.getElementById("oblique");
+obliqueBtn.onclick = () => {
+    drawingType = 2;
+    main();
+}
+
 const animateBtn = document.getElementById("animate");
 let stopAnim = false;
 let run = false

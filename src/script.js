@@ -238,8 +238,23 @@ function main() {
 
         var matrix;
 
-        matrix = makeZToWMatrix(1);
-        matrix = matrixCalculator.multiply(matrix, matrixCalculator.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400));
+        if (drawingType == 0){
+            matrix = makeZToWMatrix(1);
+            matrix = matrixCalculator.multiply(matrix, matrixCalculator.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400));
+          } else if (drawingType == 2) {
+            /*
+            *   Oblique bisa 30, 45, 60 yang penting dia gak half scale aja, half itu cabinet
+            */
+            matrix = [
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                Math.cos(45)/2, Math.sin(45)/2, 0, 0,
+                0, 0, 0, 1,
+            ];
+            matrix = matrixCalculator.multiply(matrix, matrixCalculator.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400));
+          } else if(drawingType == 1) {
+            matrix = matrixCalculator.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 1000);
+          }
     
         matrix = matrixCalculator.translate(matrix, gl.canvas.clientWidth/2, gl.canvas.clientHeight/2, 0);
         matrix = matrixCalculator.xRotate(matrix, camrotation[0]);
