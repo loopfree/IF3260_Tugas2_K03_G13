@@ -155,9 +155,9 @@
     </tr>
     <tr>
         <td align="center">
-            -
+            <img src="assets/hollow-triangular-prism.png" width=300 />
         </td>
-        <td align="center"><strong>✗</strong></td>
+        <td align="center"><strong>✓</strong></td>
         <td align="center">13520159 - Atabik</td>
     </tr>
 </table>
