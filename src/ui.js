@@ -375,6 +375,8 @@ const reset_ui = () => {
     greenValue.innerHTML = green.value;
     blueValue.innerHTML = blue.value;
 
+    drawingType = 0;
+
     main();
 }
 reset.onclick = () => {
