@@ -35,6 +35,7 @@
 * [Showcase](#showcase)
 * [How to Run](#how-to-run)
 * [Checklist dan Pembagian Tugas](#checklist-dan-pembagian-tugas)
+* [Referensi](#referensi)
 
 ### Overview
 <img src="assets/overview.png"/>
@@ -160,3 +161,11 @@
         <td align="center">13520159 - Atabik</td>
     </tr>
 </table>
+
+### Referensi
+1. https://webglfundamentals.org/webgl/lessons/webgl-3d-lighting-directional.html
+2. https://webglfundamentals.org/webgl/lessons/webgl-3d-lighting-point.html
+3. https://learnopengl.com/Lighting/Basic-Lighting
+4. http://learnwebgl.brown37.net/09_lights/lights_combined.html
+5. https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/PPT/WEEK08/Angel_UNM_14_8_1.ppt
+6. https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/PPT/WEEK08/Angel_UNM_14_8_4.ppt
