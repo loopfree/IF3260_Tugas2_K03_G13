@@ -8,7 +8,6 @@ function degToRad(d) {
 }
 
 var canvas = document.getElementById("canvas");
-console.log(canvas)
 var gl = canvas.getContext("webgl");
 
 var isShade = false;

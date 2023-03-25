@@ -281,7 +281,6 @@ animateBtn.onclick = () => {
     if(run) {
         stopAnim = true;
         run = false;
-        console.log("test");
         return;
     }
     let animation = undefined;

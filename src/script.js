@@ -242,7 +242,9 @@ function main() {
             matrix = matrixCalculator.multiply(matrix, matrixCalculator.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400));
           } else if (drawingType == 2) {
             /*
-            *   Oblique bisa 30, 45, 60 yang penting dia gak half scale aja, half itu cabinet
+            *   Oblique bisa 30, 45, 60
+            *   full scale = cavalier
+            *   1/2 scale = cabinet
             */
             matrix = [
                 1, 0, 0, 0,
