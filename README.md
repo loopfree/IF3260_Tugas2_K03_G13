@@ -140,9 +140,9 @@
     </tr>
     <tr>
         <td align="center">
-            -
+            <img src="assets/hollow-triangular-pyramid.png" width=300 />
         </td>
-        <td align="center"><strong>✗</strong></td>
+        <td align="center"><strong>✓</strong></td>
         <td align="center">13520121 - Nicholas</td>
     </tr>
     <tr>
