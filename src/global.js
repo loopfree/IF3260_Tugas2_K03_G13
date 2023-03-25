@@ -27,7 +27,7 @@ var lightColor = [1, 1, 1];
 let drawingType = 0;
 
 var translation = [325, 225, 0];
-var rotation = [degToRad(15), degToRad(30), degToRad(0)];
+var rotation = [degToRad(0), degToRad(0), degToRad(0)];
 var camrotation = [degToRad(0), degToRad(0), degToRad(0)];
 var zoom = 1.0;
 var scale = [1, 1, 1];

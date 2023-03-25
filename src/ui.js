@@ -31,6 +31,8 @@ loadButton.onchange = function(event) {
         let yFlag = false;
         let zFlag = false;
 
+        reset_ui();
+
         const firstAnimation = () => {
             if(!xFlag) {
                 rotation[0] = (radToDeg(rotation[0]) + 1) % 360;
@@ -327,6 +329,15 @@ const reset_ui = () => {
     xTranslationValue.innerHTML = xTranslation.value;
     yTranslationValue.innerHTML = yTranslation.value;
     zTranslationValue.innerHTML = zTranslation.value;
+
+    //manage rotation
+    rotation = [degToRad(0), degToRad(0), degToRad(0)];
+    xRotation.value = rotation[0];
+    yRotation.value = rotation[1];
+    zRotation.value = rotation[2];
+    xRotationValue.innerHTML = xRotation.value;
+    yRotationValue.innerHTML = yRotation.value;
+    zRotationValue.innerHTML = zRotation.value;
 
     // managing camera rotation
     camrotation = [degToRad(0), degToRad(0), degToRad(0)];
